@@ -6,7 +6,7 @@
     <parent>
         <groupId>at.allaboutapps</groupId>
         <artifactId>quarkus-integresql-parent</artifactId>
-        <version>1.0.1</version>
+        <version>1.0.2</version>
     </parent>
 
     <artifactId>quarkus-integresql-integration-tests</artifactId>
