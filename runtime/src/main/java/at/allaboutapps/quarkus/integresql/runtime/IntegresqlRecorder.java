@@ -30,16 +30,22 @@ public class IntegresqlRecorder {
             String apiVersion = config.apiVersion();
             boolean debug = config.debug();
             Optional<Integer> overridePort = config.overridePort();
+            Optional<String> overrideHost = config.overrideHost();
 
             if (overridePort.isPresent()) {
                 log.infof("Overriding port to %d", overridePort.get());
+            }
+
+            if (overrideHost.isPresent()) {
+                log.infof("Overriding host to %s", overrideHost.get());
             }
 
             IntegresqlClientConfig clientSpecificConfig = IntegresqlClientConfig.customConfig(
                     baseUrl,
                     apiVersion,
                     debug,
-                    overridePort);
+                    overridePort,
+                    overrideHost);
 
             return new IntegresqlJavaClient(clientSpecificConfig);
         };

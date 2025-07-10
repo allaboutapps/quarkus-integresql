@@ -1,0 +1,32 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Runtime Module Guide
+
+The runtime module contains the core implementation of the Quarkus IntegreSQL extension.
+
+## Module Structure
+
+- **Source Code**: `runtime/src/main/java/at/allaboutapps/quarkus/integresql/runtime/`
+- **Resources**: `runtime/src/main/resources/`
+- **Build Configuration**: [runtime/pom.xml](mdc:runtime/pom.xml)
+
+## Key Components
+
+1. **Runtime Configuration**
+   - Configuration classes and properties
+   - Located in the runtime package
+
+2. **Core Implementation**
+   - Main integration logic
+   - Database connection handling
+   - Service implementations
+
+## Development Notes
+
+1. All runtime implementations should be in the `at.allaboutapps.quarkus.integresql.runtime` package
+2. Configuration properties should be properly documented
+3. Follow Quarkus extension development best practices
+4. Ensure proper error handling and logging

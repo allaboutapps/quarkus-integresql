@@ -1,0 +1,89 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Deployment Module Guide
+
+The deployment module handles the build-time processing and configuration of the Quarkus IntegreSQL extension.
+
+## Module Structure
+
+- **Source Code**: `deployment/src/main/java/at/allaboutapps/quarkus/integresql/deployment/`
+- **Build Configuration**: [deployment/pom.xml](mdc:deployment/pom.xml)
+
+## Key Components
+
+### 1. Build Processor
+- **File**: [QuarkusIntegresqlProcessor.java](mdc:deployment/src/main/java/at/allaboutapps/quarkus/integresql/deployment/QuarkusIntegresqlProcessor.java)
+- **Purpose**: Main build-time processor that handles:
+  - Feature registration
+  - Dev Services setup
+  - CDI bean configuration
+  - Runtime configuration generation
+
+### 2. Dev Services
+- **Location**: `deployment/devservices/`
+- **Main Component**: [IntegreSQLRunningDevService.java](mdc:deployment/src/main/java/at/allaboutapps/quarkus/integresql/deployment/devservices/IntegreSQLRunningDevService.java)
+- **Functionality**:
+  - Manages PostgreSQL and IntegreSQL containers
+  - Handles container lifecycle
+  - Provides development environment setup
+
+### 3. Configuration
+- **Location**: `deployment/config/`
+- **Purpose**: Build-time configuration classes and properties
+
+### 4. Container Management
+- **Location**: `deployment/container/`
+- **Purpose**: Container configuration and management utilities
+
+## Build Steps
+
+1. **Feature Registration**
+   - Registers the extension as a Quarkus feature
+   - Uses the identifier "integresql"
+
+2. **Dev Services Setup**
+   - Starts PostgreSQL and IntegreSQL containers
+   - Configures development environment
+   - Generates runtime configuration
+
+3. **Client Bean Configuration**
+   - Creates CDI bean for IntegreSQL client
+   - Configures runtime settings
+   - Sets up application-scoped bean
+
+## Development Guidelines
+
+1. **Build Processor**
+   - Add new build steps using `@BuildStep` annotation
+   - Use appropriate execution time (`@Record`)
+   - Handle configuration through build items
+
+2. **Dev Services**
+   - Ensure proper container cleanup
+   - Handle configuration generation
+   - Implement proper error handling
+
+3. **Configuration**
+   - Use build-time config for build-specific settings
+   - Generate runtime config for runtime settings
+   - Document all configuration properties
+
+4. **Container Management**
+   - Follow Quarkus container best practices
+   - Implement proper resource cleanup
+   - Handle container lifecycle events
+
+## Important Notes
+
+1. The deployment module is responsible for:
+   - Build-time processing
+   - Development environment setup
+   - Runtime configuration generation
+   - CDI bean registration
+
+2. Dev Services are only active in development and test modes
+3. Container management should handle both startup and shutdown
+4. Configuration should be properly documented and validated

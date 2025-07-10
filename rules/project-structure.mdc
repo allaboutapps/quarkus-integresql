@@ -1,0 +1,38 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Quarkus IntegreSQL Project Structure
+
+This is a Quarkus extension project for IntegreSQL integration. The project is organized into three main modules:
+
+## Project Modules
+
+1. **Runtime Module** (`runtime/`)
+   - Contains the core runtime implementation
+   - Located at: `at.allaboutapps.quarkus.integresql.runtime`
+   - Main source code is in `runtime/src/main/java/`
+
+2. **Deployment Module** (`deployment/`)
+   - Contains deployment-specific code and configurations
+   - Handles the build-time processing
+
+3. **Integration Test Module** (`integration-test/`)
+   - Contains integration tests for the extension
+   - Tests the functionality in a real Quarkus application context
+
+## Build Configuration
+
+The project uses Maven for build management:
+- Main build configuration is in [pom.xml](mdc:pom.xml)
+- Uses Quarkus version 3.21.2
+- Java 17 is required for compilation
+- UTF-8 encoding is used throughout the project
+
+## Development Guidelines
+
+1. All new features should be implemented in the runtime module first
+2. Deployment configurations should be added to the deployment module
+3. Integration tests should be written in the integration-test module
+4. Follow the existing package structure: `at.allaboutapps.quarkus.integresql.*`

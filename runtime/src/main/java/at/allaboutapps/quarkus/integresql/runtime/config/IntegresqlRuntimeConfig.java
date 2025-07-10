@@ -47,4 +47,11 @@ public interface IntegresqlRuntimeConfig {
      * If not set, the default port will be used (5432).
      */
     Optional<Integer> overridePort();
+
+    /**
+     * Override the host the IntegreSQL client uses to connect to the PostgreSQL
+     * server.
+     * If not set, the default host will be used (localhost).
+     */
+    Optional<String> overrideHost();
 }
