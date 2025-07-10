@@ -101,6 +101,12 @@ public class IntegreSQLRunningDevService {
             // Get the actual mapped port that PostgreSQL is accessible on
             int postgresPort = postgresqlContainer.getMappedPort(PostgreSQLContainer.POSTGRESQL_PORT);
 
+            String postgresHost = postgresqlContainer.getHost();
+
+            if (integresqlConfig.devServices().db().host().isPresent()) {
+                postgresHost = integresqlConfig.devServices().db().host().get();
+            }
+
             String host = container.getHost();
             int port = container.getMappedPort(IntegreSQLContainer.INTEGRESQL_PORT);
             String baseUrl = String.format("http://%s:%d/api", host, port);
@@ -113,6 +119,7 @@ public class IntegreSQLRunningDevService {
             Map<String, String> config = Map.of(
                     IntegresqlConstants.CONFIG_BASE_URL, baseUrl,
                     IntegresqlConstants.CONFIG_PORT, String.valueOf(postgresPort),
+                    IntegresqlConstants.CONFIG_HOST, postgresHost,
                     IntegresqlConstants.CONFIG_API_VERSION, "v1");
 
             return new DevServicesResultBuildItem.RunningDevService(feature, container.getContainerId(), cfg::close,
