@@ -7,7 +7,7 @@
     <parent>
         <groupId>at.allaboutapps</groupId>
         <artifactId>quarkus-integresql-parent</artifactId>
-        <version>1.0.2</version>
+        <version>1.0.3</version>
     </parent>
     <artifactId>quarkus-integresql</artifactId>
     <name>Quarkus Integresql - Runtime</name>
@@ -20,7 +20,7 @@
         <dependency>
             <groupId>at.allaboutapps.integresql</groupId>
             <artifactId>integresql-java-client</artifactId>
-            <version>1.0.2</version>
+            <version>1.0.3</version>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
